@@ -40,3 +40,26 @@ variable "key_pair" {
   description = "key pair"
   default     = "cmtr-otuokx4e-keypair"
 }
+variable "template" {
+  type        = string
+  description = "template name"
+  default     = "cmtr-otuokx4e-template"
+}
+
+variable "asg" {
+  type        = string
+  description = "autoscaling group name"
+  default     = "cmtr-otuokx4e-asg"
+}
+
+variable "loadbalancer" {
+  type        = string
+  description = "loadbalancer name"
+  default     = "cmtr-otuokx4e-loadbalancer"
+}
+
+variable "iam_profile" {
+  type        = string
+  description = "loadbalancer name"
+  default     = "cmtr-otuokx4e-instance_profile"
+}

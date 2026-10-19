@@ -1,5 +1,5 @@
 resource "aws_launch_template" "alt" {
-  name          = "cmtr-otuokx4e-template"
+  name          = var.template
   image_id      = "ami-042d7899818bea126"
   instance_type = "t3.micro"
 
@@ -20,7 +20,7 @@ resource "aws_launch_template" "alt" {
   }
 
   iam_instance_profile {
-    name = "test"
+    name = var.iam_profile
   }
 
   user_data = filebase64("${path.module}/script.sh")
@@ -33,7 +33,7 @@ resource "aws_launch_template" "alt" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name             = "cmtr-otuokx4e-asg"
+  name             = var.asg
   max_size         = 2
   min_size         = 1
   desired_capacity = 2
@@ -44,7 +44,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 resource "aws_lb" "load_balancer" {
-  name               = "cmtr-otuokx4e-loadbalancer"
+  name               = var.loadbalancer
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.sg_lb_http]
