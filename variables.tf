@@ -34,3 +34,9 @@ variable "sg_lb_http" {
   description = "allows HTTP access to the load balancer from the internet"
   default     = "cmtr-otuokx4e-sglb"
 }
+
+variable "key_pair" {
+  type        = string
+  description = "key pair"
+  default     = "cmtr-otuokx4e-keypair"
+}
