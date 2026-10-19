@@ -41,6 +41,9 @@ resource "aws_autoscaling_group" "asg" {
   min_size            = 1
   desired_capacity    = 2
   vpc_zone_identifier = data.aws_subnets.subnets.ids
+  target_group_arns = [
+    aws_lb_target_group.target_group.arn
+  ]
   lifecycle {
     ignore_changes = [
       load_balancers,
