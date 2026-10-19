@@ -78,5 +78,5 @@ variable "iam_profile" {
 variable "tg" {
   type        = string
   description = "target group"
-  default     = "target_group"
+  default     = "targetgroup"
 }
