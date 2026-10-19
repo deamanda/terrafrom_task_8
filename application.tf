@@ -12,8 +12,8 @@ resource "aws_launch_template" "alt" {
   network_interfaces {
     delete_on_termination = true
     security_groups = [
-    data.aws_security_group.sg_http.id, data.aws_security_group.sg_http.id
-  ]
+      data.aws_security_group.sg_http.id, data.aws_security_group.sg_http.id
+    ]
   }
 
   key_name = var.key_pair
