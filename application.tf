@@ -58,7 +58,7 @@ resource "aws_lb" "load_balancer" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [data.aws_security_group.sg_lb_http.id]
-  subnets            = data.aws_subnets.subnets.ids
+  subnets            = data.aws_subnets.subnets_public.ids
   tags = {
     Terraform = "true"
     Project   = var.project_id
