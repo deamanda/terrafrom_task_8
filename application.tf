@@ -40,7 +40,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size            = 2
   min_size            = 1
   desired_capacity    = 2
-  vpc_zone_identifier = data.aws_subnets.subnets_public.ids
+  vpc_zone_identifier = data.aws_subnets.subnets.ids
   lifecycle {
     ignore_changes = [
       load_balancers,
