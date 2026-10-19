@@ -1,10 +1,18 @@
-variable "vpc_name" {
-  type        = string
-  description = "vpc name"
-  default     = "cmtr-otuokx4e-vpc"
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:Name"
+    values = ["cmtr-otuokx4e-vpc"]
+  }
 }
 
 data "aws_subnets" "subnets" {
+  filter {
+    name   = "tag:Name"
+    values = ["*private*"]
+  }
+}
+
+data "aws_subnets" "subnets_public" {
   filter {
     name   = "tag:Name"
     values = ["*public*"]
@@ -17,22 +25,25 @@ variable "project_id" {
   default     = "cmtr-otuokx4e"
 }
 
-variable "sg_ssh" {
-  type        = string
-  description = "allows SSH access to EC2 instances"
-  default     = "cmtr-otuokx4e-ec2_sg"
+data "aws_security_group" "sg_ssh" {
+  filter {
+    name   = "tag:Name"
+    values = ["cmtr-otuokx4e-ec2_sg"]
+  }
 }
 
-variable "sg_http" {
-  type        = string
-  description = "allows HTTP access to EC2 instances"
-  default     = "cmtr-otuokx4e-http_sg"
+data "aws_security_group" "sg_http" {
+  filter {
+    name   = "tag:Name"
+    values = ["cmtr-otuokx4e-http_sg"]
+  }
 }
 
-variable "sg_lb_http" {
-  type        = string
-  description = "allows HTTP access to the load balancer from the internet"
-  default     = "cmtr-otuokx4e-sglb"
+data "aws_security_group" "sg_lb_http" {
+  filter {
+    name   = "tag:Name"
+    values = ["cmtr-otuokx4e-sglb"]
+  }
 }
 
 variable "key_pair" {
