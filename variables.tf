@@ -74,3 +74,9 @@ variable "iam_profile" {
   description = "loadbalancer name"
   default     = "cmtr-otuokx4e-instance_profile"
 }
+
+variable "tg" {
+  type        = string
+  description = "target group"
+  default     = "target_group"
+}
